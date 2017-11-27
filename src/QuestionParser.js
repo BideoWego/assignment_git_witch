@@ -7,7 +7,9 @@ class QuestionParser {
       .split(' ')
       .filter(w => !['what', 'many'].includes(w))
       .join(' ');
-    const query = str.match(/^what/) ? 'details' : 'count';
+    const query = str.match(/^what/) ?
+      'details' :
+      'count';
 
     return { username, subject, query };
   }

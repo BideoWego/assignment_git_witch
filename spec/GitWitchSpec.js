@@ -1,6 +1,6 @@
 const GitWitch = require("../src/GitWitch");
 
-xdescribe("GitWitch", () => {
+describe("GitWitch", () => {
   beforeEach(() => {
     this.parser = { parse() {} };
     this.runner = { run() {} };
@@ -10,9 +10,9 @@ xdescribe("GitWitch", () => {
     this.response = "response";
     this.output = "output";
 
-    spyOn(this.parser, "parse").andReturn(this.command);
-    spyOn(this.runner, "run").andReturn(Promise.resolve(this.response));
-    spyOn(this.formatter, "format").andReturn(this.output);
+    spyOn(this.parser, "parse").and.returnValue(this.command);
+    spyOn(this.runner, "run").and.returnValue(Promise.resolve(this.response));
+    spyOn(this.formatter, "format").and.returnValue(this.output);
 
     this.witch = new GitWitch({
       parser: this.parser,
