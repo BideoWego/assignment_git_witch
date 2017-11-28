@@ -10,8 +10,8 @@ class QuestionParser {
     const query = str.match(/^what/) ?
       'details' :
       'count';
-
-    return { username, subject, query };
+    const parsed = { username, subject, query };
+    return parsed;
   }
 }
 

@@ -1,7 +1,7 @@
 const exec = require("child_process").exec;
 
 // When you're ready to test your entire application. Change 'xdescribe` to 'describe'.
-xdescribe("An Integration Test", () => {
+describe("An Integration Test", () => {
   it("works for details", done => {
     const expectedOutput = `
 griselde's public repos
@@ -13,8 +13,7 @@ Eye-Of-Newt - EON is a new frontend framework written in pure spaghetti code.
       "node ./src/GitWitchCli.js what repos does griselde have?",
       (error, stdout, stderr) => {
         if (error) {
-          console.error(`exec error: ${error}`);
-          return;
+          throw error;
         }
         expect(stdout).toEqual(expectedOutput);
         done();
@@ -30,8 +29,7 @@ Eye-Of-Newt - EON is a new frontend framework written in pure spaghetti code.
       "node ./src/GitWitchCli.js how many repos does griselde have?",
       (error, stdout, stderr) => {
         if (error) {
-          console.error(`exec error: ${error}`);
-          return;
+          throw error;
         }
         expect(stdout).toEqual(expectedOutput);
         done();

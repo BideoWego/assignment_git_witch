@@ -1,5 +1,21 @@
+const GitWitch = require('./GitWitch');
+const QuestionParser = require('./QuestionParser');
+const CommandRunner = require('./CommandRunner');
+const ResponseFormatter = require('./ResponseFormatter');
 
-console.log(`
-griselde's public repos
-Code-Coven - A version control system for weird sisters
-Eye-Of-Newt - EON is a new frontend framework written in pure spaghetti code.`);
+
+const parser = new QuestionParser();
+const runner = new CommandRunner();
+const formatter = new ResponseFormatter();
+const gw = new GitWitch({
+  parser,
+  runner,
+  formatter
+});
+
+
+(async () => {
+  const input = process.argv.slice(2).join(' ');
+  const output = await gw.process(input);
+  console.log(output);
+})();
